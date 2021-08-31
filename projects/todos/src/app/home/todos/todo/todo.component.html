@@ -1,0 +1,16 @@
+<li class="flex justify-between mb-2">
+  <div class="flex items-center" appTooltip>
+    <input class="mr-2" type="checkbox" [checked]="todo.completed"
+      (change)="toggle()">
+    <input class="p-2 border border-gray-300 rounded mt-4" [value]="todo.label"
+      [style.display]="editMode ? '' : 'none'"
+      (keydown.enter)="completeEdit($event)">
+    <label (dblclick)="enableEditMode()" class="mr-2"
+      [class.line-through]="todo.completed"
+      [style.display]="editMode ? 'none' : 'block'">{{todo.label}}</label>
+  </div>
+  <button
+    class="py-2 px-4 bg-red-500 text-white rounded hover:shadow-lg text-sm"
+    (click)="delete.emit(todo)">Delete</button>
+
+</li>

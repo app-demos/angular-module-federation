@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/header",
             "index": "projects/header/src/index.html",
@@ -29,7 +29,9 @@
             "styles": [
               "projects/header/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/header/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -51,7 +53,8 @@
                   "with": "projects/header/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/header/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -65,25 +68,31 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "header:build:production"
+              "browserTarget": "header:build:production",
+              "extraWebpackConfig": "projects/header/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "header:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/header/webpack.config.js",
+            "port": 3003
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "header:build"
+            "browserTarget": "header:build",
+            "extraWebpackConfig": "projects/header/webpack.config.js"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/header/src/test.ts",
             "polyfills": "projects/header/src/polyfills.ts",
@@ -96,7 +105,8 @@
             "styles": [
               "projects/header/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/header/webpack.config.js"
           }
         }
       }
@@ -113,7 +123,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/footer",
             "index": "projects/footer/src/index.html",
@@ -127,7 +137,9 @@
             "styles": [
               "projects/footer/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/footer/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -149,7 +161,8 @@
                   "with": "projects/footer/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/footer/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -163,25 +176,31 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "footer:build:production"
+              "browserTarget": "footer:build:production",
+              "extraWebpackConfig": "projects/footer/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "footer:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/footer/webpack.config.js",
+            "port": 3004
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "footer:build"
+            "browserTarget": "footer:build",
+            "extraWebpackConfig": "projects/footer/webpack.config.js"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/footer/src/test.ts",
             "polyfills": "projects/footer/src/polyfills.ts",
@@ -194,7 +213,8 @@
             "styles": [
               "projects/footer/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/footer/webpack.config.js"
           }
         }
       }
@@ -211,7 +231,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/todos",
             "index": "projects/todos/src/index.html",
@@ -225,7 +245,9 @@
             "styles": [
               "projects/todos/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/todos/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -247,7 +269,8 @@
                   "with": "projects/todos/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/todos/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -261,25 +284,31 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "todos:build:production"
+              "browserTarget": "todos:build:production",
+              "extraWebpackConfig": "projects/todos/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "todos:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/todos/webpack.config.js",
+            "port": 3001
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "todos:build"
+            "browserTarget": "todos:build",
+            "extraWebpackConfig": "projects/todos/webpack.config.js"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/todos/src/test.ts",
             "polyfills": "projects/todos/src/polyfills.ts",
@@ -292,7 +321,8 @@
             "styles": [
               "projects/todos/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/todos/webpack.config.js"
           }
         }
       }
@@ -309,7 +339,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/tracker",
             "index": "projects/tracker/src/index.html",
@@ -323,7 +353,9 @@
             "styles": [
               "projects/tracker/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/tracker/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -345,7 +377,8 @@
                   "with": "projects/tracker/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/tracker/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -359,25 +392,31 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tracker:build:production"
+              "browserTarget": "tracker:build:production",
+              "extraWebpackConfig": "projects/tracker/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "tracker:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/tracker/webpack.config.js",
+            "port": 3002
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "tracker:build"
+            "browserTarget": "tracker:build",
+            "extraWebpackConfig": "projects/tracker/webpack.config.js"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/tracker/src/test.ts",
             "polyfills": "projects/tracker/src/polyfills.ts",
@@ -390,7 +429,8 @@
             "styles": [
               "projects/tracker/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/tracker/webpack.config.js"
           }
         }
       }
@@ -407,7 +447,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/host",
             "index": "projects/host/src/index.html",
@@ -421,7 +461,9 @@
             "styles": [
               "projects/host/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/host/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -443,7 +485,8 @@
                   "with": "projects/host/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/host/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -457,25 +500,31 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "host:build:production"
+              "browserTarget": "host:build:production",
+              "extraWebpackConfig": "projects/host/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "host:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/host/webpack.config.js",
+            "port": 4200
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "host:build"
+            "browserTarget": "host:build",
+            "extraWebpackConfig": "projects/host/webpack.config.js"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/host/src/test.ts",
             "polyfills": "projects/host/src/polyfills.ts",
@@ -488,7 +537,8 @@
             "styles": [
               "projects/host/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/host/webpack.config.js"
           }
         }
       }

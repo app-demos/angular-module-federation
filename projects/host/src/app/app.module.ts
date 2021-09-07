@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MfeWrapperComponent } from './components/mfe-wrapper/mfe-wrapper.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MfeWrapperComponent
   ],
   imports: [
     BrowserModule,

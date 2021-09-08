@@ -5,11 +5,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HabitsListComponent } from './components/habits-list/habits-list.component';
-import { HabitsFormComponent } from './components/habits-form/habits-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HabitsListComponent, HabitsFormComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

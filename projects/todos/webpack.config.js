@@ -28,7 +28,7 @@ module.exports = {
       name: "todos",
       filename: "remoteEntry.js",
       exposes: {
-        './Module': './projects/todos/src/app/app.module.ts',
+        './TodosAppModule': './projects/todos/src/app/todos-app/todos-app.module.ts',
       },
 
       // For hosts (please adjust)

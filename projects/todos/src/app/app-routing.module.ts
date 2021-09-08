@@ -1,25 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 
 const routes: Routes = [{
-  path: 'todos',
-  component: AppComponent,
-  children: [
-    {
-      path: 'app',
-      loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
-    },
-    {
-      path: '**',
-      redirectTo: 'app',
-    },
-  ],
+  path: '',
+  redirectTo: 'todos',
+  pathMatch: 'full'
 },
 {
-  path: '**',
-  redirectTo: 'todos',
-}];
+  path: 'todos',
+  loadChildren: () => import('./todos-app/todos-app.module').then((m) => m.TodosAppModule),
+},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

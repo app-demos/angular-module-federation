@@ -25,7 +25,7 @@ export class HabitsFormComponent {
   public onSubmit() {
     const habit = this.habitForm.value as Habit;
     this.habitService.create(habit);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/tracker');
   }
 
 }

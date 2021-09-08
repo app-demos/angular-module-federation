@@ -20,4 +20,4 @@ import { CommonModule } from '@angular/common';
   declarations: [TodosComponent, TodoComponent, TodosFilter, TooltipDirective],
   exports: [TodosComponent],
 })
-export class HomeModule { }
+export class TodosAppModule { }

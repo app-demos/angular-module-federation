@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HabitsFormComponent } from './components/habits-form/habits-form.component';
-import { HabitsListComponent } from './components/habits-list/habits-list.component';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [{
-  path: 'add',
-  component: HabitsFormComponent
-}, {
-  path: '**',
-  component: HabitsListComponent
-}];
+  path: '',
+  redirectTo: 'tracker',
+  pathMatch: 'full'
+},
+{
+  path: 'tracker',
+  loadChildren: () => import('./tracker-app/tracker-app.module').then((m) => m.TrackerAppModule),
+},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

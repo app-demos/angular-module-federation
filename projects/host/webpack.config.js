@@ -33,11 +33,10 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
+        "todos": "todos@http://localhost:3001/remoteEntry.js",
+        "tracker": "tracker@http://localhost:3002/remoteEntry.js",
         "header": "header@http://localhost:3003/remoteEntry.js",
         "footer": "footer@http://localhost:3004/remoteEntry.js",
-        "todos": "todos@http://localhost:3000/remoteEntry.js",
-        // "tracker": "tracker@http://localhost:4200/remoteEntry.js",
-
       },
 
       shared: share({

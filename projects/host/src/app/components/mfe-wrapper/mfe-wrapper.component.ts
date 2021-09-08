@@ -29,12 +29,17 @@ export class MfeWrapperComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    const { HeaderComponent, FooterComponent } = await loadRemoteModule(MFE_CONFIGURATION[this.componentName]);
-    if (this.componentName === 'header') {
-      const componentRef: ComponentRef<{}> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(HeaderComponent));
-    } else {
-      const componentRef: ComponentRef<{}> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(FooterComponent));
+    try {
+      const { HeaderComponent, FooterComponent } = await loadRemoteModule(MFE_CONFIGURATION[this.componentName]);
+      if (this.componentName === 'header') {
+        const componentRef: ComponentRef<{}> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(HeaderComponent));
+      } else {
+        const componentRef: ComponentRef<{}> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(FooterComponent));
+      }
+    } catch (error) {
+      console.log(error);
     }
+
   }
 
 }

@@ -17,14 +17,13 @@ const routes: Route[] = [
   }];
 
 @NgModule({
-  declarations: [HabitsListComponent, HabitsFormComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
-  providers: [],
+  declarations: [HabitsListComponent, HabitsFormComponent],
   exports: [],
 })
 export class TrackerAppModule { }

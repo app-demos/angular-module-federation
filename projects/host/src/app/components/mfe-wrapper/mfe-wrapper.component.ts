@@ -32,7 +32,9 @@ export class MfeWrapperComponent implements OnInit {
     try {
       const { HeaderComponent, FooterComponent } = await loadRemoteModule(MFE_CONFIGURATION[this.componentName]);
       if (this.componentName === 'header') {
-        const componentRef: ComponentRef<{}> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(HeaderComponent));
+        const componentRef: ComponentRef<any> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(HeaderComponent));
+        componentRef.instance.title = 'Module Federation';
+
       } else {
         const componentRef: ComponentRef<{}> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(FooterComponent));
       }

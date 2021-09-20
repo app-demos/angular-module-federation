@@ -1,21 +1,22 @@
-<section class="flex flex-col bg-white w-1/2 mx-auto m-8 rounded-lg shadow">
-  <header class="flex flex-col py-8 border-b-2 border-gray-200 px-6">
-    <h1 class="text-3xl uppercase text-gray-500 font-semibold">todos</h1>
-    <input (keydown.enter)="addTodo(input)" #input
-      class="p-2 border border-gray-300 rounded mt-4"
-      placeholder="What needs to be done?" autofocus />
-  </header>
-  <section class="flex flex-col justify-center py-8 px-6">
-    <ul class="flex flex-col">
-      <app-todo appTooltip *ngFor="let todo of todos" [todo]="todo"
-        (delete)="onDelete($event)" (update)="onChange($event)">
-      </app-todo>
-    </ul>
+<div class="bg-blue-100">
+  <section class="flex flex-col">
+    <header class="flex flex-col py-8 border-b border-blue-500 px-6">
+      <input (keydown.enter)="addTodo(input)" #input
+        class="p-2 border border-blue-500 rounded mt-4"
+        placeholder="What needs to be done?" autofocus />
+    </header>
+    <section class="flex flex-col justify-center py-8 px-6">
+      <ul class="flex flex-col">
+        <app-todo appTooltip *ngFor="let todo of todos" [todo]="todo"
+          (delete)="onDelete($event)" (update)="onChange($event)">
+        </app-todo>
+      </ul>
+    </section>
+    <footer class="py-8 border-t border-blue-500 px-6 flex justify-between">
+      <span class="text-lg"><strong>{{ itemsLeft }}</strong> item left</span>
+      <button class="py-2 px-4 bg-gray-500 text-white rounded hover:shadow-lg"
+        (click)="clearCompleted()">Clear
+        completed</button>
+    </footer>
   </section>
-  <footer class="py-8 border-t-2 border-gray-200 px-6 flex justify-between">
-    <span class="text-lg"><strong>{{ itemsLeft }}</strong> item left</span>
-    <button class="py-2 px-4 bg-gray-500 text-white rounded hover:shadow-lg"
-      (click)="clearCompleted()">Clear
-      completed</button>
-  </footer>
-</section>
+</div>

@@ -14,13 +14,6 @@ export class HabitsListComponent {
 
   editClick(habit: Habit, index: number) {
     this.router.navigateByUrl('/add');
-    // this.habitForm.patchValue({
-    //   name: habit.name,
-    //   frequency: habit.frequency,
-    //   description: habit.description,
-    // });
-    // this.editing = true;
-    // this.editingIndex = index;
   }
 
   deleteClick(index: number) {

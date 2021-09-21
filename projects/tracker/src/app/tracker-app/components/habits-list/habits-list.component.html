@@ -7,7 +7,7 @@
       </a>
     </div>
     <div class="p-3 border border-blue-500 rounded-lg mb-3"
-      *ngFor="let habit of habitService.list(); let i = index">
+      *ngFor="let habit of habits$ | async; ; let i = index">
       <div class="flex justify-between">
         <p class="text font-semibold mr-2">
           {{ habit.name }}

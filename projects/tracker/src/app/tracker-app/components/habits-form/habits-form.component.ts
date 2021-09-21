@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Habit } from '../../models/habit';
-import { HabitsService } from '../../services/habits.service';
+import { Store } from '@ngrx/store';
 
+import { Habit } from '../../store/models/habit';
+import * as trackerActions from '../../store/actions/tracker.actions';
 @Component({
   selector: 'app-habits-form',
   templateUrl: './habits-form.component.html',
@@ -20,11 +21,11 @@ export class HabitsFormComponent {
   adding = true;
   editing = false;
 
-  constructor(private habitService: HabitsService, private router: Router) { }
+  constructor(private router: Router, private store: Store) { }
 
   public onSubmit() {
     const habit = this.habitForm.value as Habit;
-    this.habitService.create(habit);
+    this.store.dispatch(trackerActions.addHabit({ habit }))
     this.router.navigateByUrl('/tracker');
   }
 

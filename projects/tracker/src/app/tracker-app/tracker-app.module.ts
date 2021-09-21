@@ -5,6 +5,11 @@ import { HabitsListComponent } from './components/habits-list/habits-list.compon
 import { HabitsFormComponent } from './components/habits-form/habits-form.component';
 import { RouterModule, Route } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { EffectsModule } from '@ngrx/effects';
+import { TrackerEffects } from './store/effects/tracker.effects';
+import { StoreModule } from '@ngrx/store';
+
+import * as trackerReducer from './store/reducers/tracker.reducer';
 
 const routes: Route[] = [
   {
@@ -22,6 +27,8 @@ const routes: Route[] = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+    StoreModule.forFeature('tracker', trackerReducer.reducer),
+    EffectsModule.forFeature([TrackerEffects]),
   ],
   declarations: [HabitsListComponent, HabitsFormComponent],
   exports: [],

@@ -1,60 +1,47 @@
 import { Component, EventEmitter, Output, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
-import { Todo } from '../models/todo';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
+import { Todo } from '../store/models/todo';
+import * as todosSelector from '../store/selectors/todos.selectors'
+import * as TodosActions from '../store/actions/todos.actions';
 @Component({
   templateUrl: 'todos.component.html',
   selector: 'app-todos',
 })
 export class TodosComponent {
-  todos: Todo[] = [
-    {
-      label: 'Buy milk',
-      completed: false,
-      id: '42',
-    },
-    {
-      label: 'Build something fun!',
-      completed: false,
-      id: '43',
-    },
-  ];
+  todos$: Observable<Todo[]>;
+  pendingTodosCount$: Observable<number>;
 
   @Output() update = new EventEmitter();
   @Output() delete = new EventEmitter();
   @Output() add = new EventEmitter();
 
-  get itemsLeft(): number {
-    return (this.todos || []).filter((t) => !t.completed).length;
+  constructor(private store: Store) {
+    this.store.dispatch(TodosActions.loadTodos());
+    this.todos$ = this.store.select(todosSelector.selectTodos);
+    this.pendingTodosCount$ = this.store.select(todosSelector.selectPendingTodosCount);
   }
 
   clearCompleted(): void {
-    (this.todos || []).filter((t) => t.completed).forEach((t) => this.onDelete(t));
+    this.store.dispatch(TodosActions.clearCompleted());
   }
 
   addTodo(input: HTMLInputElement): void {
-    const todo = {
+    const todo: Todo = {
       completed: false,
       label: input.value,
+      id: Math.random().toString()
     };
-    const result: Todo = { ...todo, id: Math.random().toString() };
-    this.todos.push(result);
+    this.store.dispatch(TodosActions.addTodo({ todo }));
     input.value = '';
   }
 
   onChange(todo: Todo): void {
-    if (!todo.id) {
-      return;
-    }
+    this.store.dispatch(TodosActions.updateTodo({ todo }));
   }
 
   onDelete(todo: Todo): void {
-    if (!todo.id) {
-      return;
-    }
-    const idx = this.todos.findIndex((t) => t.id === todo.id);
-    if (idx < 0) {
-      return;
-    }
-    this.todos.splice(idx, 1);
+    this.store.dispatch(TodosActions.deleteTodo({ todo }));
   }
 }

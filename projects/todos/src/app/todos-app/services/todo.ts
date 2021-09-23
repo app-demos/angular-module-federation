@@ -1,4 +1,4 @@
-import { Todo } from '../models/todo';
+import { Todo } from '../store/models/todo';
 
 export abstract class TodosService {
   getAll(): Promise<Todo[]> {

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Todo } from '../models/todo';
+import { Todo } from '../store/models/todo';
 
 export const enum TodoFilter {
   All = 'all',

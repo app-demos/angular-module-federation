@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../../models/todo';
+import { Todo } from '../../store/models/todo';
 
 @Component({
   templateUrl: 'todo.component.html',
@@ -15,8 +15,7 @@ export class TodoComponent {
   editMode = false;
 
   toggle(): void {
-    this.todo.completed = !this.todo.completed;
-    this.update.emit(this.todo);
+    this.update.emit({ ...this.todo, completed: !this.todo.completed });
   }
 
   completeEdit($event: any): void {

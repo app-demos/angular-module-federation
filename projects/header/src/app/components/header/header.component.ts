@@ -7,4 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() title: string = 'Title';
+  @Input() todosCount: number;
+  @Input() habitsCount: number;
+
+  sayHello() {
+    console.log('sayHello');
+  }
 }

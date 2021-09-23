@@ -9,14 +9,23 @@
           [routerLink]="['']">Home</a>
       </li>
       |
-      <li>
-        <a class="text-sm font-semibold text-gray-700 hover:text-indigo-700 px-4"
+      <li class="flex items-center">
+        <a class="text-sm font-semibold text-gray-700 hover:text-indigo-700 pl-4 pr-2"
           [routerLink]="['todos']">Todos</a>
+        <p
+          class="text-xs bg-red-600 text-white rounded-xl items-center px-1 mr-4">
+          {{todosCount}}
+        </p>
       </li>
       |
-      <li>
-        <a class="text-sm font-semibold text-gray-700 hover:text-indigo-700 px-4"
+      <li class="flex items-center">
+        <a class="text-sm font-semibold text-gray-700 hover:text-indigo-700 pl-4 pr-2"
           [routerLink]="['tracker']">Habit Tracker</a>
+        <p
+          class="text-xs bg-red-600 text-white rounded-xl items-center px-1 mr-4">
+          {{habitsCount}}
+        </p>
+
       </li>
     </ul>
     <div>

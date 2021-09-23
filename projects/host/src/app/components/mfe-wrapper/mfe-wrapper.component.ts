@@ -1,6 +1,7 @@
 import { Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, ViewContainerRef } from '@angular/core';
 
 import { loadRemoteModule } from '@angular-architects/module-federation'
+import { Store } from '@ngrx/store';
 
 const MFE_CONFIGURATION = {
   'header': {
@@ -22,19 +23,29 @@ const MFE_CONFIGURATION = {
 export class MfeWrapperComponent implements OnInit {
 
   @Input() componentName: 'header' | 'footer' = 'header';
+  headerRef: ComponentRef<any>;
 
   constructor(
     private _componentFactoryResolver: ComponentFactoryResolver,
-    private _viewContainerRef: ViewContainerRef
-  ) { }
+    private _viewContainerRef: ViewContainerRef,
+    private store: Store
+  ) {
+
+    this.store.select(store => store).subscribe((state: any) => {
+      if (this.headerRef) {
+        this.headerRef.instance.todosCount = state.todos?.todos?.length;
+        this.headerRef.instance.habitsCount = state.tracker?.habits?.length;
+      }
+    })
+
+  }
 
   async ngOnInit() {
     try {
       const { HeaderComponent, FooterComponent } = await loadRemoteModule(MFE_CONFIGURATION[this.componentName]);
       if (this.componentName === 'header') {
-        const componentRef: ComponentRef<any> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(HeaderComponent));
-        componentRef.instance.title = 'Module Federation';
-
+        this.headerRef = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(HeaderComponent));
+        this.headerRef.instance.title = 'Module Federation';
       } else {
         const componentRef: ComponentRef<{}> = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(FooterComponent));
       }

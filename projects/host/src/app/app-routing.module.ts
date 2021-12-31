@@ -10,7 +10,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         remoteEntry: 'http://localhost:3001/remoteEntry.js',
-        remoteName: 'todos',
+        type: 'module',
         exposedModule: './TodosAppModule'
       })
         .then(m => m.TodosAppModule)
@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         remoteEntry: 'http://localhost:3002/remoteEntry.js',
-        remoteName: 'tracker',
+        type: 'module',
         exposedModule: './TrackerAppModule'
       })
         .then(m => m.TrackerAppModule)

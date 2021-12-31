@@ -21,9 +21,12 @@ module.exports = {
       ...sharedMappings.getAliases(),
     }
   },
+  experiments: {
+    outputModule: true
+  },
   plugins: [
     new ModuleFederationPlugin({
-
+      library: { type: "module" },
       // For remotes (please adjust)
       // name: "host",
       // filename: "remoteEntry.js",
@@ -33,10 +36,10 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
-        "todos": "todos@http://localhost:3001/remoteEntry.js",
-        "tracker": "tracker@http://localhost:3002/remoteEntry.js",
-        "header": "header@http://localhost:3003/remoteEntry.js",
-        "footer": "footer@http://localhost:3004/remoteEntry.js",
+        "todos": "http://localhost:3001/remoteEntry.js",
+        "tracker": "http://localhost:3002/remoteEntry.js",
+        "header": "http://localhost:3003/remoteEntry.js",
+        "footer": "http://localhost:3004/remoteEntry.js",
       },
 
       shared: share({

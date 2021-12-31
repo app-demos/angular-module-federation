@@ -6,12 +6,12 @@ import { Store } from '@ngrx/store';
 const MFE_CONFIGURATION = {
   'header': {
     remoteEntry: 'http://localhost:3003/remoteEntry.js',
-    remoteName: 'header',
+    type: 'module',
     exposedModule: './HeaderComponent'
   },
   'footer': {
     remoteEntry: 'http://localhost:3004/remoteEntry.js',
-    remoteName: 'footer',
+    type: 'module',
     exposedModule: './FooterComponent'
   }
 }
@@ -42,7 +42,7 @@ export class MfeWrapperComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const { HeaderComponent, FooterComponent } = await loadRemoteModule(MFE_CONFIGURATION[this.componentName]);
+      const { HeaderComponent, FooterComponent } = await loadRemoteModule(MFE_CONFIGURATION[this.componentName] as any);
       if (this.componentName === 'header') {
         this.headerRef = this._viewContainerRef.createComponent(this._componentFactoryResolver.resolveComponentFactory(HeaderComponent));
         this.headerRef.instance.title = 'Module Federation';

@@ -80,6 +80,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
+            "publicHost": "http://localhost:3003",
             "extraWebpackConfig": "projects/header/webpack.config.js",
             "port": 3003
           }
@@ -188,6 +189,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
+            "publicHost": "http://localhost:3004",
             "extraWebpackConfig": "projects/footer/webpack.config.js",
             "port": 3004
           }
@@ -296,6 +298,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
+            "publicHost": "http://localhost:3001",
             "extraWebpackConfig": "projects/todos/webpack.config.js",
             "port": 3001
           }
@@ -404,6 +407,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
+            "publicHost": "http://localhost:3002",
             "extraWebpackConfig": "projects/tracker/webpack.config.js",
             "port": 3002
           }
@@ -512,6 +516,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
+            "publicHost": "http://localhost:4200",
             "extraWebpackConfig": "projects/host/webpack.config.js",
             "port": 4200
           }

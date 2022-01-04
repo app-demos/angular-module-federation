@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
+import { TOKEN_CONFIG } from 'shared';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,10 @@ export class HeaderComponent {
   @Input() title: string = 'Title';
   @Input() todosCount: number;
   @Input() habitsCount: number;
+
+  constructor(@Inject(TOKEN_CONFIG) config) {
+    console.log('config', config);
+  }
 
   sayHello() {
     console.log('sayHello');
